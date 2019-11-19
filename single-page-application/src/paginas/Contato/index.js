@@ -1,10 +1,11 @@
 import React from 'react';
 import './styles.css'
+import Formulario from './Formulario';
 
 function Contato () {
     return (
         <section className="contato">
-            <h2>Página de contatos</h2>
+            <Formulario />
         </section>
     )
 }
