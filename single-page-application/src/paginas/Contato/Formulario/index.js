@@ -1,5 +1,6 @@
 import React from 'react';
-import Grupo from './Grupo';
+import Grupo from './componentes/Grupo';
+import Botao from './componentes/Botao'
 
 class Formulario extends React.Component {
     constructor(props) {
@@ -33,12 +34,28 @@ class Formulario extends React.Component {
         })
     }
 
+    estaDesabilitado = () => {
+        return (
+            !this.state.nome.valor || this.state.nome.erro || !this.state.email.valor || this.state.email.erro || !this.state.pais.valor || this.state.pais.erro
+        )
+    }
+
+    handleSubmit = () =>{
+        const novoContato = {
+            nome: this.state.nome.valor,
+            email: this.state.email.valor,
+            pais: this.state.pais.valor,
+            mensagem: this.state.mensagem.valor
+        }
+        console.log(novoContato, "Dados enviados!")
+    }
+
     render() {
-        console.log(this.state)
+        const verificaBotao = this.estaDesabilitado()
         return (
             <div className="pagina">
                 <h2>Entre em contato conosco!</h2>
-                <form className="formulario">
+                <form className="formulario" onSubmit={this.handleSubmit}>
                     <Grupo erro={this.state.nome.erro}>
                         <Grupo.Legenda htmlFor="nome"> Nome Completo: </Grupo.Legenda>
                         <Grupo.CaixaTexto
@@ -76,10 +93,18 @@ class Formulario extends React.Component {
                             name="mensagem"
                             placeholder="Digite sua mensagem"
                             fcMudaEstado={this.handleChange}
-                            required
                             type="text"
                         />
                     </Grupo>
+                    <Botao
+                        desabilitado={verificaBotao}
+                        mudaConteudo={this.props.mudaConteudo}
+                        onSubmit={this.handleSubmit}
+                        pagina = "sucesso"
+                        type = "submit"
+                    >
+                        Enviar
+                    </Botao>
                 </form>
             </div>
         )

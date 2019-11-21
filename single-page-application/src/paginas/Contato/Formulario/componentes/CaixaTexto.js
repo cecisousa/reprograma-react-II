@@ -25,7 +25,7 @@ function CaixaTexto (props) {
             props.fcMudaEstado(name, value, "Digite um e-mail válido!")
             return
         }
-        // props.fcMudaEstado(name, value)
+        props.fcMudaEstado(name, value)
     }
 
     return (
