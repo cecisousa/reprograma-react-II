@@ -34,7 +34,8 @@ class Blog extends React.Component {
                 <div className="blog-postagens">
                 {this.state.posts.length > 0
                     ? this.state.posts.map(item => {
-                        return <Postagem conteudo={item} key={item.id} />
+                        // return <Postagem conteudo={item} key={item.id} />
+                        return <Postagem {...item} key={item.id} />
                     })
                     : <span>Carregando mensagens...</span>
                 }
