@@ -4,9 +4,9 @@ import './styles.css'
 function Postagem(props){
     return (
         <div className="postagem">
-            <h3>{props.post.title}</h3>
-            <p>{props.post.body}</p>
-            <button className="botao">Saiba mais</button>
+            <h3>{props.conteudo.title}</h3>
+            <p>{props.conteudo.body}</p>
+            <button className="botao" onClick={() => window.open("https://github.com/cecisousa", "_blank")}>Saiba mais</button>
         </div>
     )
 }

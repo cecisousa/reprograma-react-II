@@ -7,7 +7,7 @@ const config = {
 
 const protocolo = axios.create(config)
 
-export function getMensagens () {
+export function getPosts () {
   const url = '/posts'
   return protocolo.get(url)
 }

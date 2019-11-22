@@ -1,5 +1,5 @@
 import React from 'react';
-import { getMensagens } from '../../service/posts'
+import { getPosts } from '../../service/posts'
 import Header from '../../componentes/Header'
 import Postagem from './componentes/Postagem'
 import './styles.css'
@@ -13,7 +13,7 @@ class Blog extends React.Component {
     }
 
     componentDidMount() {
-        getMensagens()
+        getPosts()
             .then(response => {
                 this.setState({
                     posts: response.data
@@ -33,8 +33,8 @@ class Blog extends React.Component {
                 />
                 <div className="blog-postagens">
                 {this.state.posts.length > 0
-                    ? this.state.posts.map(post => {
-                        return <Postagem post={post} key={post.id} />
+                    ? this.state.posts.map(item => {
+                        return <Postagem conteudo={item} key={item.id} />
                     })
                     : <span>Carregando mensagens...</span>
                 }
@@ -43,7 +43,6 @@ class Blog extends React.Component {
         )
     }
 }
-
 
 
 export default Blog;
