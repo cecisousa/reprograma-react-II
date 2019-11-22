@@ -3,8 +3,8 @@ import './styles.css'
 
 function Header(props){
     return(
-        <section className="home-header">
-            <h1>A era da comunicação intergalática!</h1>
+        <section className={props.class}>
+            <h1>{props.titulo}</h1>
         </section>
     )
 }
